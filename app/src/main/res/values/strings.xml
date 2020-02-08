@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Punktual</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_in">sign in</string>
+    <string name="username">Username</string>
+    <string name="a_clock">a clock</string>
 </resources>

@@ -10,5 +10,16 @@
         android:id="@+id/loginFragment"
         android:name="com.example.punktual.screens.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_testLoginFragment"
+            app:destination="@id/testLoginFragment"
+            app:popUpTo="@+id/loginFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/testLoginFragment"
+        android:name="com.example.punktual.screens.login.TestLoginFragment"
+        android:label="fragment_test_login"
+        tools:layout="@layout/fragment_test_login" />
 </navigation>

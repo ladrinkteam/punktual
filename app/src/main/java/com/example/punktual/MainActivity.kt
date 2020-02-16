@@ -1,11 +1,12 @@
 package com.example.punktual
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.punktual.helpers.Store
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
-import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,15 +17,16 @@ class MainActivity : AppCompatActivity() {
         FirebaseInstanceId.getInstance().instanceId
             .addOnCompleteListener(OnCompleteListener { task ->
                 if (!task.isSuccessful) {
-                    Timber.w( task.exception, "getInstanceId failed")
+                    Log.i("carl", task.exception.toString() + "getInstanceId failed")
                     return@OnCompleteListener
                 }
 
                 task.result?.let {token ->
                     // Log and toast
                     val msg = token.token
-                    Timber.d("Firebase Token: $msg")
+                    Log.d("carl","Firebase Token: $msg")
                     Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+                    Store.putString("push_token", msg)
                 }
             })
     }

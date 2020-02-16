@@ -17,8 +17,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/tokenLayout"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="-1dp">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/usernameLabel"
@@ -26,10 +25,10 @@
                 android:layout_height="wrap_content"
                 android:labelFor="@id/username"
                 android:text="@string/username"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/username"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="20dp" />
 
             <EditText
@@ -42,7 +41,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/usernameLabel"/>
+                app:layout_constraintTop_toBottomOf="@+id/usernameLabel" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -51,9 +50,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usernameLayout"
-            tools:layout_editor_absoluteX="-1dp">
+            app:layout_constraintBottom_toTopOf="@+id/getValueButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/usernameLayout">
 
             <TextView
                 android:id="@+id/tokenLabel"
@@ -61,10 +62,10 @@
                 android:layout_height="wrap_content"
                 android:labelFor="@id/token"
                 android:text="@string/token"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/token"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="20dp" />
 
             <EditText
@@ -82,6 +83,17 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/getValueButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/get_values"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tokenLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

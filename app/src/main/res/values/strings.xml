@@ -6,4 +6,6 @@
     <string name="username">Username</string>
     <string name="a_clock">a clock</string>
     <string name="token">Token</string>
+    <string name="timberTag">carl</string>
+    <string name="get_values">get values</string>
 </resources>

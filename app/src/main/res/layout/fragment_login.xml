@@ -70,16 +70,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="19dp"
-                android:labelFor="@id/username"
+                android:labelFor="@id/usernameEdit"
                 android:text="@string/username"
-                app:layout_constraintBottom_toTopOf="@+id/username"
-                app:layout_constraintEnd_toEndOf="@+id/username"
+                app:layout_constraintBottom_toTopOf="@+id/usernameEdit"
+                app:layout_constraintEnd_toEndOf="@+id/usernameEdit"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@+id/username"
+                app:layout_constraintStart_toStartOf="@+id/usernameEdit"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/usernameEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="14"

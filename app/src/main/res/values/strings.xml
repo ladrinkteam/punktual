@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">Punktual</string>
-
     <string name="sign_up">Sign up</string>
     <string name="sign_in">sign in</string>
     <string name="username">Username</string>
     <string name="a_clock">a clock</string>
     <string name="token">Token</string>
     <string name="timberTag">carl</string>
-    <string name="get_values">get values</string>
+    <string name="id">id</string>
+    <string name="papeterie">papeterie</string>
+    <string name="campus">campus</string>
+    <string name="get_user">get user</string>
 </resources>

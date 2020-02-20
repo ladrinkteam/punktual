@@ -9,9 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.example.punktual.R
+import com.example.punktual.helpers.ApiAccess
 import com.example.punktual.helpers.Store
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
+import okhttp3.OkHttpClient
 
 /**
  * A simple [Fragment] subclass.
@@ -48,7 +50,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun goToTestLoginFragment(view: View) {
-        view.findNavController().navigate(R.id.action_loginFragment_to_testLoginFragment)
+        view.findNavController().navigate(R.id.action_loginFragment_to_simulationFragment)
     }
 
 }

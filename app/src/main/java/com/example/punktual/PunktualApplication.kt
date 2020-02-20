@@ -1,16 +1,12 @@
 package com.example.punktual
 
 import android.app.Application
-import android.content.Context
+import com.example.punktual.helpers.Store
 
 class PunktualApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        appContext = applicationContext
-    }
-
-    companion object {
-        lateinit var appContext: Context
+        Store.initStoreContext(applicationContext)
     }
 }

@@ -22,10 +22,9 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 task.result?.let {token ->
-                    // Log and toast
                     val msg = token.token
-                    Log.d("carl","Firebase Token: $msg")
-                    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+                    Log.i("carl","Firebase Token: $msg")
+                    //Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
                     Store.putString("push_token", msg)
                 }
             })

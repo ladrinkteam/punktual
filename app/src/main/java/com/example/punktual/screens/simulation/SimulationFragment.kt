@@ -38,6 +38,13 @@ class SimulationFragment : Fragment() {
         return binding.rootView
     }
 
+    override fun onStart() {
+        super.onStart()
+        usernameEdit.setText(Store.getString("username"))
+        idEdit.setText(Store.getString("id"))
+        tokenEdit.setText(Store.getString("push_token"))
+    }
+
     private fun onGetUser() {
 
         val usernameRequest = Store.getString("username")

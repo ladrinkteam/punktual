@@ -10,4 +10,11 @@
     <string name="papeterie">papeterie</string>
     <string name="campus">campus</string>
     <string name="get_user">get user</string>
+    <string name="code_400">Your request is malformed, or missing data</string>
+    <string name="code_409_register">User already exists, login instead</string>
+    <string name="code_200_register">You are registered and logged in</string>
+    <string name="code_404_login">User not found on the server, register before login</string>
+    <string name="code_200_login">You are logged in</string>
+    <string name="error_pushtoken">PushToken is required</string>
+    <string name="error_username">Username is required</string>
 </resources>

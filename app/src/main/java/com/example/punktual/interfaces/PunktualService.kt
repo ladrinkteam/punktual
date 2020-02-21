@@ -9,4 +9,7 @@ import retrofit2.http.POST
 interface PunktualService {
     @POST("/login")
     fun login(@Body userToConnect: UserToConnect): Call<User>
+
+    @POST("/register")
+    fun register(@Body userToConnect: UserToConnect): Call<User>
 }

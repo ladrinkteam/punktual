@@ -9,6 +9,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.gms.location.Geofence
+import com.google.android.gms.location.GeofencingClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
@@ -19,8 +22,7 @@ import timber.log.Timber
 
 private const val REQUEST_PERMISSION_LOCATION_START_UPDATE = 101
 private const val REQUEST_CHECK_FOR_SETTINGS = 200
-
-private const val MAP_DEFAULT_ZOOM = 8f
+private const val MAP_DEFAULT_ZOOM = 14f
 
 /**
  * For more informations go to https://developer.android.com/training/location
@@ -37,9 +39,8 @@ private const val MAP_DEFAULT_ZOOM = 8f
 class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var map: GoogleMap
     private lateinit var locationLiveData: LocationLiveData
-
+    lateinit var geofencingClient: GeofencingClient
     private var userMarker : Marker? = null
-
     private var firstLocation = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,7 +69,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
         locationLiveData = LocationLiveData(this)
         locationLiveData.observe(this, Observer { handleLocationData(it!!) })
-
     }
 
     /**
@@ -123,13 +123,12 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         //If we get the location
         locationData.location?.let { it ->
             val latLng = LatLng(it.latitude, it.longitude)
-            println(latLng)
             if (userMarker != null) userMarker?.run { remove() }
             userMarker = map.addMarker(
                 MarkerOptions()
                     .position(latLng))
             map.moveCamera(CameraUpdateFactory
-                .newLatLngZoom(latLng, 19.0.toFloat()))
+                .newLatLngZoom(latLng, MAP_DEFAULT_ZOOM))
             firstLocation = false
         }
 
@@ -170,6 +169,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         return true
     }
+
+
 
 
 }

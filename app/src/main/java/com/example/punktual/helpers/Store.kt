@@ -5,20 +5,24 @@ import android.content.Context.MODE_PRIVATE
 
 class Store {
     companion object {
-        lateinit var storeContext: Context
+        private lateinit var context: Context
 
-        fun initStoreContext (storeContext: Context) {
-            this.storeContext = storeContext
+        fun setContext (context: Context) {
+            this.context = context
+        }
+
+        fun getContext(): Context {
+            return context
         }
 
         fun putString (key: String ,value: String) {
-            val editor = storeContext.getSharedPreferences("Punktual", MODE_PRIVATE).edit()
+            val editor = context.getSharedPreferences("Punktual", MODE_PRIVATE).edit()
             editor.putString(key, value)
             editor.apply()
         }
 
         fun getString (key: String): String? {
-            return storeContext.getSharedPreferences("Punktual", MODE_PRIVATE).getString(key, null) // 0 - for private mode
+            return context.getSharedPreferences("Punktual", MODE_PRIVATE).getString(key, null) // 0 - for private mode
         }
     }
 }

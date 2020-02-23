@@ -6,14 +6,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.punktual.R
+import com.example.punktual.enums.LocationType
 import com.example.punktual.helpers.Store
 import com.example.punktual.interfaces.PunktualService
-import com.example.punktual.models.User
-import com.example.punktual.models.UserToConnect
+import com.example.punktual.models.Position
 import kotlinx.android.synthetic.main.fragment_simulation.*
 import kotlinx.android.synthetic.main.fragment_simulation.view.*
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,7 +35,8 @@ class SimulationFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding: View = inflater.inflate(R.layout.fragment_simulation, container, false)
         Log.i("carl", "SimulationFragment")
-        binding.getUserButton.setOnClickListener{ onGetUser() }
+        binding.campusButton.setOnClickListener{ onCampusButton() }
+        binding.papeterieButton.setOnClickListener{ onPapeterieButton() }
 
         return binding.rootView
     }
@@ -45,12 +48,23 @@ class SimulationFragment : Fragment() {
         tokenEdit.setText(Store.getString("push_token"))
     }
 
-    private fun onGetUser() {
+    private fun onCampusButton() {
+        onPositionResgister(LocationType.CAMPUS_NUMERIQUE)
+    }
 
-        val usernameRequest = Store.getString("username")
+    private fun onPapeterieButton() {
+        onPositionResgister(LocationType.PAPETERIE)
+    }
+
+    private fun onPositionResgister(locationType: LocationType) {
+        Log.i("carl","onPositionRegister")
+
+        val idRequest = Store.getString("id")
         val pushtokenRequest = Store.getString("push_token")
+        val latitudeRequest = latitudeEdit.text.toString()
+        val longitudeRequest = longitudeEdit.text.toString()
 
-        if (usernameRequest != null && pushtokenRequest != null) {
+        if (idRequest != null && idRequest != "" && pushtokenRequest != null && pushtokenRequest != "" && latitudeRequest != "" && longitudeRequest != "") {
             val retrofit = Retrofit.Builder()
                 .baseUrl(url)
                 .addConverterFactory(MoshiConverterFactory.create())
@@ -58,26 +72,43 @@ class SimulationFragment : Fragment() {
 
             val service = retrofit.create(PunktualService::class.java)
 
-            val userToConnect: UserToConnect = UserToConnect(usernameRequest, pushtokenRequest)
-            val userRequest = service.login(userToConnect)
+            val position = Position(latitudeRequest.toDouble(), longitudeRequest.toDouble())
+            val request = service.positionRegister(position, locationType.toString(), idRequest)
 
-            userRequest.enqueue(object : Callback<User> {
-                override fun onResponse(call: Call<User>, response: Response<User>) {
-                    val user = response.body()
-                    if (user != null) {
-                        usernameEdit.setText(user.username)
-                        idEdit.setText(user.id)
-                        tokenEdit.setText(user.pushToken)
-                        Log.i("carl", "${user.id}")
-                        Log.i("carl", "${user.username}")
-                        Log.i("carl", "${user.pushToken}")
+            request.enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                    if (202 == response.code()) {
+                        val message = response.body()?.string().toString()
+                        Log.i("carl", message)
+                        Toast.makeText(Store.getContext(), message, Toast.LENGTH_LONG).show()
+                    }
+                    else if (404 == response.code()) {
+                        val message = "(${response.code().toString()}) " + getString(R.string.code_404_position_register)
+                        Log.e("carl", message)
+                        Toast.makeText(Store.getContext(), message, Toast.LENGTH_SHORT).show()
+                    }
+                    else if (400 == response.code()) {
+                        val message = "(${response.code().toString()}) " + getString(R.string.code_400)
+                        Log.e("carl", message)
+                        Toast.makeText(Store.getContext(), message, Toast.LENGTH_SHORT).show()
                     }
                 }
-
-                override fun onFailure(call: Call<User>, t: Throwable) {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     error("KO")
                 }
             })
+        }
+        else {
+            if (latitudeRequest ==  "") {
+                val message = getString(R.string.error_latitude)
+                Log.w("carl", message)
+                Toast.makeText(Store.getContext(), message, Toast.LENGTH_SHORT).show()
+            }
+            if (longitudeRequest == "") {
+                val message = getString(R.string.error_longitude)
+                Log.w("carl", message)
+                Toast.makeText(Store.getContext(), message, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

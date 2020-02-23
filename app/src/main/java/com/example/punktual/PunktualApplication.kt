@@ -7,6 +7,6 @@ class PunktualApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        Store.initStoreContext(applicationContext)
+        Store.setContext(applicationContext)
     }
 }

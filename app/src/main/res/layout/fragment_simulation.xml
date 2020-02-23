@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingLeft="20sp"
+    android:paddingRight="20sp"
     tools:context="com.example.punktual.screens.simulation.SimulationFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -104,21 +106,10 @@
                 android:textAlignment="center"
                 android:textSize="16sp"
                 android:textStyle="italic"
-                app:layout_constraintBottom_toTopOf="@id/getUserButton"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tokenLabel" />
-
-            <Button
-                android:id="@+id/getUserButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/get_user"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tokenEdit" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -130,6 +121,60 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/userLayout"
             tools:layout_editor_absoluteX="-16dp">
+
+            <TextView
+                android:id="@+id/latitudeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/latitudeEdit"
+                android:text="@string/latitude"
+                app:layout_constraintBottom_toTopOf="@+id/latitudeEdit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/latitudeEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="14"
+                android:importantForAutofill="no"
+                android:inputType="numberSigned|numberDecimal"
+                android:text="45.97888"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toTopOf="@id/longitudeLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/latitudeLabel" />
+
+            <TextView
+                android:id="@+id/longitudeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/longitudeEdit"
+                android:text="@string/longitude"
+                app:layout_constraintBottom_toTopOf="@+id/longitudeEdit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/latitudeEdit" />
+
+            <EditText
+                android:id="@+id/longitudeEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="14"
+                android:importantForAutofill="no"
+                android:inputType="numberSigned|numberDecimal"
+                android:text="6.102780"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toTopOf="@id/papeterieButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/longitudeLabel" />
 
             <Button
                 android:id="@+id/papeterieButton"

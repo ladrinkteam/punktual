@@ -14,7 +14,12 @@
     <string name="code_409_register">User already exists, login instead</string>
     <string name="code_200_register">You are registered and logged in</string>
     <string name="code_404_login">User not found on the server, register before login</string>
+    <string name="code_404_position_register">Specified user not found in storage, please register before to get an Id</string>
     <string name="code_200_login">You are logged in</string>
     <string name="error_pushtoken">PushToken is required</string>
     <string name="error_username">Username is required</string>
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="error_latitude">Latitude is required</string>
+    <string name="error_longitude">Longitude is required</string>
 </resources>

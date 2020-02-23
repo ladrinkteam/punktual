@@ -68,17 +68,17 @@ class LoginFragment : Fragment() {
                         if (user != null) {
                             Store.putString("id", user.id)
                             Log.i("carl", getString(R.string.code_200_login))
-                            Toast.makeText(Store.storeContext, getString(R.string.code_200_login), Toast.LENGTH_LONG).show()
+                            Toast.makeText(Store.getContext(), getString(R.string.code_200_login), Toast.LENGTH_LONG).show()
                             goToTestLoginFragment(view)
                         }
                     }
                     else if (404 == response.code()) {
                         Log.e("carl", "(${response.code().toString()}) " + getString(R.string.code_404_login))
-                        Toast.makeText(Store.storeContext, getString(R.string.code_404_login), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(Store.getContext(), getString(R.string.code_404_login), Toast.LENGTH_SHORT).show()
                     }
                     else if (400 == response.code()) {
                         Log.e("carl", "(${response.code().toString()}) " + getString(R.string.code_400))
-                        Toast.makeText(Store.storeContext, getString(R.string.code_400), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(Store.getContext(), getString(R.string.code_400), Toast.LENGTH_SHORT).show()
                     }
                 }
                 override fun onFailure(call: Call<User>, t: Throwable) {
@@ -89,11 +89,11 @@ class LoginFragment : Fragment() {
         else {
             if (usernameRequest == null || usernameRequest == "") {
                 Log.w("carl", getString(R.string.error_username))
-                Toast.makeText(Store.storeContext, getString(R.string.error_username), Toast.LENGTH_SHORT).show()
+                Toast.makeText(Store.getContext(), getString(R.string.error_username), Toast.LENGTH_SHORT).show()
             }
             if (pushtokenRequest == null || pushtokenRequest == "") {
                 Log.w("carl", getString(R.string.error_pushtoken))
-                Toast.makeText(Store.storeContext, getString(R.string.error_pushtoken) + "\nPlease restart Punktual", Toast.LENGTH_SHORT).show()
+                Toast.makeText(Store.getContext(), getString(R.string.error_pushtoken) + "\nPlease restart Punktual", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -123,17 +123,17 @@ class LoginFragment : Fragment() {
                         if (user != null) {
                             Store.putString("id", user.id)
                             Log.i("carl", getString(R.string.code_200_register))
-                            Toast.makeText(Store.storeContext, getString(R.string.code_200_register), Toast.LENGTH_LONG).show()
+                            Toast.makeText(Store.getContext(), getString(R.string.code_200_register), Toast.LENGTH_LONG).show()
                             goToTestLoginFragment(view)
                         }
                     }
                     else if (409 == response.code()) {
                         Log.e("carl", "(${response.code().toString()}) " + getString(R.string.code_409_register))
-                        Toast.makeText(Store.storeContext, getString(R.string.code_409_register), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(Store.getContext(), getString(R.string.code_409_register), Toast.LENGTH_SHORT).show()
                     }
                     else if (400 == response.code()) {
                         Log.e("carl", "(${response.code().toString()}) " + getString(R.string.code_400))
-                        Toast.makeText(Store.storeContext, getString(R.string.code_400), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(Store.getContext(), getString(R.string.code_400), Toast.LENGTH_SHORT).show()
                     }
                 }
                 override fun onFailure(call: Call<User>, t: Throwable) {
@@ -144,11 +144,11 @@ class LoginFragment : Fragment() {
         else {
             if (usernameRequest == null || usernameRequest == "") {
                 Log.w("carl", getString(R.string.error_username))
-                Toast.makeText(Store.storeContext, getString(R.string.error_username), Toast.LENGTH_SHORT).show()
+                Toast.makeText(Store.getContext(), getString(R.string.error_username), Toast.LENGTH_SHORT).show()
             }
             if (pushtokenRequest == null || pushtokenRequest == "") {
                 Log.w("carl", getString(R.string.error_pushtoken))
-                Toast.makeText(Store.storeContext, getString(R.string.error_pushtoken) + "\nPlease restart Punktual", Toast.LENGTH_SHORT).show()
+                Toast.makeText(Store.getContext(), getString(R.string.error_pushtoken) + "\nPlease restart Punktual", Toast.LENGTH_SHORT).show()
             }
         }
     }

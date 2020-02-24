@@ -22,4 +22,12 @@
     <string name="latitude">Latitude</string>
     <string name="error_latitude">Latitude is required</string>
     <string name="error_longitude">Longitude is required</string>
+    <string name="message_title">You sent a message:</string>
+    <string name="message_campus">I\'m on campus</string>
+    <string name="message_papeterie">I\'m close papeteries</string>
+    <string name="latitude_campus">45.907888</string>
+    <string name="longitude_campus">6.102780</string>
+    <string name="parking_latitude">45.909165</string>
+    <string name="parking_longitude">6.105376</string>
+
 </resources>

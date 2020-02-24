@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.punktual.R
 import com.example.punktual.enums.LocationType
+import com.example.punktual.helpers.Notification
 import com.example.punktual.helpers.Store
 import com.example.punktual.interfaces.PunktualService
 import com.example.punktual.models.Position
@@ -49,10 +50,16 @@ class SimulationFragment : Fragment() {
     }
 
     private fun onCampusButton() {
+        latitudeEdit.setText(getString(R.string.latitude_campus))
+        longitudeEdit.setText(getString(R.string.longitude_campus))
+
         onPositionResgister(LocationType.CAMPUS_NUMERIQUE)
     }
 
     private fun onPapeterieButton() {
+        latitudeEdit.setText(getString(R.string.parking_latitude))
+        longitudeEdit.setText(getString(R.string.parking_longitude))
+
         onPositionResgister(LocationType.PAPETERIE)
     }
 
@@ -79,18 +86,19 @@ class SimulationFragment : Fragment() {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if (202 == response.code()) {
                         val message = response.body()?.string().toString()
+                        Notification.buildNotification("You sent a message:", message)
                         Log.i("carl", message)
-                        Toast.makeText(Store.getContext(), message, Toast.LENGTH_LONG).show()
+//                        Toast.makeText(Store.getContext(), message, Toast.LENGTH_LONG).show()
                     }
                     else if (404 == response.code()) {
                         val message = "(${response.code().toString()}) " + getString(R.string.code_404_position_register)
                         Log.e("carl", message)
-                        Toast.makeText(Store.getContext(), message, Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(Store.getContext(), message, Toast.LENGTH_SHORT).show()
                     }
                     else if (400 == response.code()) {
                         val message = "(${response.code().toString()}) " + getString(R.string.code_400)
                         Log.e("carl", message)
-                        Toast.makeText(Store.getContext(), message, Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(Store.getContext(), message, Toast.LENGTH_SHORT).show()
                     }
                 }
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {

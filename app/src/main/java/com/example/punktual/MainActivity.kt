@@ -171,6 +171,25 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
 
+    private fun buildGeofence(): Geofence? {
+        val latitude = 45.907888
+        val longitude = 6.102780
+        val radius = 400
 
+        return Geofence.Builder()
+            // 1
+            //.setRequestId(reminder.id)
+            // 2
+            .setCircularRegion(
+                latitude,
+                longitude,
+                radius.toFloat()
+            )
+            // 3
+            .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER)
+            // 4
+            .setExpirationDuration(Geofence.NEVER_EXPIRE)
+            .build()
+    }
 
 }
